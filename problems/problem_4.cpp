@@ -3,15 +3,16 @@
 
 std::string problemSolution4(const std::string &macAddress) {
     // write your code here
-    std::string result;
-    int octet = macAddress[0]+macAddress[1];
-    if(octet/2==0){
-        result ='Unicast';
-    }else if(octet/2 !=0){
-        result = 'Multicast';
-    }else{
-        result = 'Broadcast';
+    std::stringstream ss(macAddress);
+    std::string token;
+    std::getline(ss, token, ':');
+    int firstOctet = std::stoi(token, nullptr, 16);
+
+    if (firstOctet % 2 == 0) {
+        return "Unicast";
+    } else if (firstOctet == 255) {
+        return "Broadcast";
+    } else {
+        return "Multicast";
     }
-    // make use of control flow statements
-    return result;
 }
