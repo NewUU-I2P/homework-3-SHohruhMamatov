@@ -1,4 +1,4 @@
-void problemSolution1(float consumed_water) {
+float problemSolution1(float consumed_water) {
    double cost = 13.0; // Fixed amount
     double remaining = consumption;
 
